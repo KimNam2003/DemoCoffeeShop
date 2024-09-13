@@ -50,26 +50,6 @@ export class Users1724339389718 implements MigrationInterface {
         ],
       }),
     );
-
-    await queryRunner.createTable(
-      new Table({
-        name: 'Class',
-        columns: [
-          {
-            name: 'id',
-            type: 'int',
-            isPrimary: true,
-            isGenerated: true,
-            generationStrategy: 'increment',
-          },
-          {
-            name: 'name',
-            type: 'varchar',
-            isNullable: true,
-          },
-        ],
-      }),
-    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

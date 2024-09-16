@@ -7,6 +7,8 @@ import { DatabaseConfig } from 'ormconfig';
 import { UsersService } from './database/users/service/user.sevice';
 import { productModule } from './database/products/product.module';
 import { CurrentMiddleware } from './database/users/middleware/current-user.middleware';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -14,7 +16,10 @@ import { CurrentMiddleware } from './database/users/middleware/current-user.midd
     autoLoadEntities :true,
     logging: true
      
-   }),userModule, productModule],
+   }),userModule, productModule,
+   ServeStaticModule.forRoot({
+    rootPath: join(process.cwd(), 'public'),
+  })],
   controllers: [AppController,],
   providers: [AppService],
 
